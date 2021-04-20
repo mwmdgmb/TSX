@@ -43,6 +43,12 @@
 // Child.displayName = "Name is Changed with displayName";
 
 import PropTypes from "prop-types";
+import { Button, Space, Row, Col, Typography } from 'antd'
+
+import {
+  DeleteFilled
+} from '@ant-design/icons';
+const { Text } = Typography;
 
 interface ChildProps {
   color: string;
@@ -67,12 +73,30 @@ export const Child: React.FC<ChildProps> = ({
 }) => {
   return (
     <div>
-      hello child.tsx : <span style={{ color }}>{color}</span>
-      <div>
-        {name} {name && <button onClick={handleRemoveName}>Remove Name</button>}
-      </div>
-      {children}
-      <button onClick={handleClick}>Clid me</button>
+      <Space>
+        <Row>
+          <Col span="24" className="gx-text-red">
+            <Text type="success">hello child.tsx</Text>
+          </Col>
+          <Col span="24">
+            <Text type="danger" ><Space>Color:<span style={{ color }}> {color}</span></Space></Text>
+          </Col>
+          <Col span="24">
+            <div>
+              <Space>Name:  {name} {name && <Button type="link" onClick={handleRemoveName} icon={<DeleteFilled style={{ color: "red" }} />} />}</Space>
+            </div>
+          </Col>
+
+          <Col>
+            <Space>
+              {/* {children} : */}
+              <Button type="primary" onClick={handleClick}>child me</Button>
+            </Space>
+          </Col>
+        </Row>
+
+
+      </Space>
     </div>
   );
 };
